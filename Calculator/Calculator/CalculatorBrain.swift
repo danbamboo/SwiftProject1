@@ -22,10 +22,10 @@ class CalculatorBrain{
         "e" : Operation.Constant(M_E),
         "√" : Operation.UnaryOperation(sqrt), //funcation type
         "cos" : Operation.UnaryOperation(cos), //cos
-        "×" : Operation.BinaryOperation({$0 * $1}),
-        "÷" : Operation.BinaryOperation({$0 / $1}),
-        "+" : Operation.BinaryOperation({$0 + $1}),
-        "−" : Operation.BinaryOperation({$0 - $1}),
+        "×" : Operation.BinaryOperation({ $0 * $1 }),
+        "÷" : Operation.BinaryOperation({ $0 / $1} ),
+        "+" : Operation.BinaryOperation({ $0 + $1 }),
+        "−" : Operation.BinaryOperation({ $0 - $1 }),
         "=" : Operation.Equals
     ]
     
@@ -57,6 +57,7 @@ class CalculatorBrain{
     {
         if pending != nil{
             accumulator = pending!.binaryFunction(pending!.firstOperand, accumulator)
+            pending = nil
         }
     }
     
