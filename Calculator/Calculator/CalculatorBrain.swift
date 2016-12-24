@@ -13,23 +13,23 @@ class CalculatorBrain{
     
     private var accumulator = 0.0
     
-    func setOperand(operand: Double) {
+    func setOperand(operand: Double) {  //setting function assignes accumulator
         accumulator = operand
     }
-    
+    //Dictonary of type String -- Operation (enum)
     private var operations: Dictionary<String,Operation> = [
         "π" : Operation.Constant(M_PI),
         "e" : Operation.Constant(M_E),
-        "√" : Operation.UnaryOperation(sqrt), //funcation type
+        "√" : Operation.UnaryOperation(sqrt), //pass function w/ unary type
         "cos" : Operation.UnaryOperation(cos), //cos
-        "×" : Operation.BinaryOperation({ $0 * $1 }),
+        "×" : Operation.BinaryOperation({ $0 * $1 }),  //Closure example using type inference and default variables
         "÷" : Operation.BinaryOperation({ $0 / $1} ),
         "+" : Operation.BinaryOperation({ $0 + $1 }),
         "−" : Operation.BinaryOperation({ $0 - $1 }),
         "=" : Operation.Equals
     ]
     
-    private enum Operation{
+    private enum Operation{  //Enum to represent types of operations used by dictionary
         case Constant(Double)  //associated value
         case UnaryOperation((Double) -> Double)
         case BinaryOperation((Double,Double) -> Double)
@@ -57,11 +57,11 @@ class CalculatorBrain{
     {
         if pending != nil{
             accumulator = pending!.binaryFunction(pending!.firstOperand, accumulator)
-            pending = nil
+            pending = nil  //assign back to nil because should be reset after assigning.
         }
     }
     
-    private var pending: PendingBinaryOperationInfo?
+    private var pending: PendingBinaryOperationInfo?  //struct instance assigned as optional
     
     private struct PendingBinaryOperationInfo{
         var binaryFunction: (Double,Double) -> Double

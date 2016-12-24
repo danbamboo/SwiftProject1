@@ -15,6 +15,7 @@ class ViewController: UIViewController {
     
     private var userIsInTheMiddleOfTyping = false
     
+    //action for number buttons
     @IBAction private func touchDigit(sender: UIButton) {
         let digit = sender.currentTitle!
         if userIsInTheMiddleOfTyping {
@@ -39,6 +40,7 @@ class ViewController: UIViewController {
     
     private var brain = CalculatorBrain()
     
+    //Action for the function buttons, including equal
     @IBAction private func performOperation(sender: UIButton) {
         if userIsInTheMiddleOfTyping{
             brain.setOperand(displayValue)
