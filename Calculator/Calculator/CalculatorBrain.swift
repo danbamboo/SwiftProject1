@@ -20,14 +20,16 @@ class CalculatorBrain{
     private var operations: Dictionary<String,Operation> = [
         "π" : Operation.Constant(M_PI),
         "e" : Operation.Constant(M_E),
+        "Ac" : Operation.Constant(0),
         "√" : Operation.UnaryOperation(sqrt), //pass function w/ unary type
         "cos" : Operation.UnaryOperation(cos), //cos
         "×" : Operation.BinaryOperation({ $0 * $1 }),  //Closure example using type inference and default variables
         "÷" : Operation.BinaryOperation({ $0 / $1} ),
         "+" : Operation.BinaryOperation({ $0 + $1 }),
         "−" : Operation.BinaryOperation({ $0 - $1 }),
-        "=" : Operation.Equals,
-        "Ac" : Operation.Constant(0)
+        "(-)" : Operation.UnaryOperation({$0 * -1}),
+        "=" : Operation.Equals
+        
     ]
     
     private enum Operation{  //Enum to represent types of operations used by dictionary
