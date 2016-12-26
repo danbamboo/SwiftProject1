@@ -23,11 +23,12 @@ class CalculatorBrain{
         "Ac" : Operation.Constant(0),
         "√" : Operation.UnaryOperation(sqrt), //pass function w/ unary type
         "cos" : Operation.UnaryOperation(cos), //cos
+        "(-)" : Operation.UnaryOperation({$0 * -1}),
+        "x²" : Operation.UnaryOperation({$0 * $0}),
         "×" : Operation.BinaryOperation({ $0 * $1 }),  //Closure example using type inference and default variables
         "÷" : Operation.BinaryOperation({ $0 / $1} ),
         "+" : Operation.BinaryOperation({ $0 + $1 }),
         "−" : Operation.BinaryOperation({ $0 - $1 }),
-        "(-)" : Operation.UnaryOperation({$0 * -1}),
         "=" : Operation.Equals
         
     ]
