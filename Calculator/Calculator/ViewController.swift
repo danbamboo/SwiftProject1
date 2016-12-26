@@ -14,10 +14,21 @@ class ViewController: UIViewController {
     @IBOutlet private weak var display: UILabel!  //implicitly unwraps automatically
     
     private var userIsInTheMiddleOfTyping = false
+    private var currentFloat = false
     
     //action for number buttons
     @IBAction private func touchDigit(sender: UIButton) {
         let digit = sender.currentTitle!
+        
+        if digit == "."{
+            if currentFloat{
+                return
+            }
+            else{
+                currentFloat = true
+            }
+        }
+        
         if userIsInTheMiddleOfTyping {
             let textCurrentlyInDisplay = display.text!
             display.text = textCurrentlyInDisplay + digit
@@ -45,7 +56,7 @@ class ViewController: UIViewController {
         if userIsInTheMiddleOfTyping{
             brain.setOperand(displayValue)
             userIsInTheMiddleOfTyping = false
-            
+            currentFloat = false
         }
         
         if let mathematicalSymbol = sender.currentTitle{
@@ -54,4 +65,7 @@ class ViewController: UIViewController {
         
         displayValue = brain.result
     }
+ 
+    
+    
 }
