@@ -25,6 +25,7 @@ class CalculatorBrain{
         "cos" : Operation.UnaryOperation(cos), //cos
         "(-)" : Operation.UnaryOperation({$0 * -1}),
         "x²" : Operation.UnaryOperation({$0 * $0}),
+        "Log" : Operation.UnaryOperation(log10),
         "×" : Operation.BinaryOperation({ $0 * $1 }),  //Closure example using type inference and default variables
         "÷" : Operation.BinaryOperation({ $0 / $1} ),
         "+" : Operation.BinaryOperation({ $0 + $1 }),
