@@ -26,7 +26,8 @@ class CalculatorBrain{
         "÷" : Operation.BinaryOperation({ $0 / $1} ),
         "+" : Operation.BinaryOperation({ $0 + $1 }),
         "−" : Operation.BinaryOperation({ $0 - $1 }),
-        "=" : Operation.Equals
+        "=" : Operation.Equals,
+        "Ac" : Operation.Constant(0)
     ]
     
     private enum Operation{  //Enum to represent types of operations used by dictionary
