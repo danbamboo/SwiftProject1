@@ -22,7 +22,9 @@ class CalculatorBrain{
         "e" : Operation.Constant(M_E),
         "Ac" : Operation.Constant(0),
         "√" : Operation.UnaryOperation(sqrt), //pass function w/ unary type
-        "cos" : Operation.UnaryOperation(cos), //cos
+        "cos" : Operation.UnaryOperation(cos),
+        "sin" : Operation.UnaryOperation(sin),
+        "tan" : Operation.UnaryOperation(tan),
         "(-)" : Operation.UnaryOperation({$0 * -1}),
         "x²" : Operation.UnaryOperation({$0 * $0}),
         "Log" : Operation.UnaryOperation(log10),
